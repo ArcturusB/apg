@@ -75,7 +75,7 @@ class PassphraseGenerator():
 
     TODO
     ====
-    - Switch everything to os.urandom().
+    - command-line interface
     '''
 
     wordset = {}
@@ -95,7 +95,7 @@ class PassphraseGenerator():
         words : int (default: 5)
             The default number of words in a passphrase.
         '''
-        random.seed = os.urandom(64)
+        self.random = random.SystemRandom()
         self.wordset = WordSet(wordset)
         self.delimset = delimset
         self.words = words
@@ -108,8 +108,8 @@ class PassphraseGenerator():
         '''
         if words == 'default':
             words = self.words
-        w = random.sample(self.wordset, words)
-        d = random.sample(self.delimset, words - 1)
+        w = self.random.sample(self.wordset, words)
+        d = self.random.sample(self.delimset, words - 1)
         pw = '{}'.join(w)
         pw = pw.format(*d)
         return pw
