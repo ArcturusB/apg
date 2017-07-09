@@ -1,16 +1,5 @@
 #!/usr/bin/env python3
 
-# title: A Passphrase Generator (APG)
-# author: Gabriel "ArcturusB" Pelouze
-# changed: 2016-08-05 22:21:51 (CEST)
-# copyright: 2016 Gabriel Pelouze
-# licence: GNU GPL version 3 (see http://www.gnu.org/licenses)
-# disclaimer: >
-    # This program is distributed in the hope that it will be useful, but without
-    # any warranty; without even the implied warranty of merchantability or
-    # fitness for a particular purpose. See the GNU General Public License for
-    # more details.
-
 ''' A Passphrase Generate (APG)
 
 To get started, see the PassphraseGenerator class:
@@ -60,9 +49,8 @@ class WordSet(set):
 class PassphraseGenerator():
     ''' A passphrase generator.
 
-    Add here description of passphrase format. Advertise easily-remembered
-    passphrases vs entropy (128 bit of entropy is achieved with 6 words, while
-    it would require 22 random case-sensitive alphanumeric characters.)
+    Generate passphrases that are composed of n words words randomly choosen
+    form a dictionnary, and separated by random delimiters.
 
     Attributes
     ==========
@@ -142,6 +130,6 @@ class PassphraseGenerator():
 
 if __name__ == '__main__':
 
-    p = PassphraseGenerator('apg_wordlist.txt', words=5)
+    p = PassphraseGenerator('apg_wordlist.txt', words=6)
     print('passphrase:', p())
     print('entropy:', p.entropy())
